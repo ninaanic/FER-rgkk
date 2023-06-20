@@ -1,0 +1,40 @@
+- payable function - omogućuje nekome da pošalje ether na ugovor 
+                    i pokrene kod za obračun ovog depozita.
+
+- kad require faila zove se revert i on vraca sav gas koji je ostao ali
+    ako sve fje koje su uspjesno izvrene prije require koji je failao se naplacuju i to tako da
+    taj gas daje sender a dobiva miner koji izvrsava pametni ugovor
+* assert uzmjesto require bi uzao sav gas
+- ako ne prode require transakcija nije validna 
+
+- selfdestruct (samounistenje ugovora) - nakon toga adresa na kojoj je bio taj ugovor se moze reusat
+
+- nonce - svaka adresa ima svoj nonce koji broji koliko je transakcija poslano s te adrese 
+        - ne sprema se na blokchain nego se računa kao broji koliko je transakcija poslano s te adrese 
+
+{
+  "nonce"   : 'how many confirmed transactions this account has sent previously?',
+ "gasPrice" : 'price of gas (in wei) the originator is willing to pay for this transaction',
+ "to"       : 'recipient of this transaction(either smart contract or EOA)',
+ "value"    : 'how much ether this transaction pays',
+ "data"     : 'any binary data payload',
+ "v,r,s"    : 'three components of ECDSA signature of originating account holder'
+}
+
+- 2 vrste entiteta u ethereumu: vanjski racun i smart contract
+    -  koja je razlika izmedu njih, koji od njih 2 inicira transakcije
+        -  vanjski racun sadrzi saldo, a ugovor sadrzi saldo i neki kod koji se izvrsava
+        - vanjski racun moze inicirati transakciju jer ima privatni kljuc a ugovor nemoze jer nema 
+
+-  pametni ugovori su Turing potpuni jer mogu rjesavat sve programske probleme koji su rjesivi turing strojem 
+
+- zasto koristimo gas fee i sto nam on sprjecava
+    - s gas fee mineri budu placeni kad validiraju tvoju transakciju
+    - sprjecava nam infinity loops jer ce se smart contract izvrsvaat samo dok ima gas-a 
+
+
+- Gas price is the price (in ether) per unit of gas you’re willing to pay.
+- You have to pay ether to get gas. This is the use of the cryptocurrency ether – 
+    it is used to buy gas to run transactions on the Ethereum network.
+- Gas limit is the maximum amount of gas you’re willing to purchase.
+- The transaction fee is the price you pay for gas multiplied by the amount of gas your transaction consumes.
